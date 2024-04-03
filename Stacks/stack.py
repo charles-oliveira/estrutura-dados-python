@@ -1,84 +1,40 @@
-""""
-push - adds an item to the top of the stack
-pop - removes an item from the top of the stack (and returns the value of that item)
-size - returns the size of the stack
-
-"""
-
 
 class Stack:
     def __init__(self):
         self.items = []
-
-    # push an item to the top of the items 
+    
     def push(self, element):
         self.items.append(element)
-
+    
     def pop(self):
-        if self.size() == 0:
-            print("Não é possível remover itens da pilha, pois está vazia.")
+        if self.items == 0:
+            return None
         else:
-            return self.items.pop()
-
+            print(f"O elemento '{self.items.pop()}' foi remevido da pilha.")
+    
     def size(self):
-        return len(self.items)
+        print(f"A pilha contém:  {len(self.items)} elementos.")
+    
+    def peek(self): 
+        print(f"Elemento no topo da pilha: {self.items[-1]}")
+    
 
+# Instancia a classe
 myStack = Stack()
 
-myStack.push("Page 1")
-myStack.push("Page 2")
-myStack.push("Page 3")
-myStack.push("Page 4")
+# Verifica o tamanho da Pilha
+myStack.size()
 
-print(myStack.items)
+# Adiciona elementos à pilha
+myStack.push("Page One")
+myStack.push("Page Two")
+myStack.push("Page three")
 
-myStack.pop()
-print(myStack.items)
+# Remove elementos da pilha
+myStack.pop() # remove o elemento do topo
 
+# Verifica novamente a quantidade de ele. da pilha
+myStack.size()
 
-print(myStack.size())
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# print(str(myStack.size()))
-# myStack.push(1)
-# myStack.push(4)
-# myStack.push(9)
-# print(f"O item removido da pilha foi: {myStack.pop()}")
-# print(f"A quantidade de item ou itens que restam na pilha: {myStack.size()}")
-# print("------------")
-
-# myStack.pop()
-# myStack.pop()
-# myStack.pop()
-
-
-
-
-
-
-    
-    
+# Exibe o elemento do topo da pilha
+myStack.peek()

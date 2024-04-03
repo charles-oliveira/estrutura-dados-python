@@ -1,27 +1,45 @@
-def busca_binaria(array, valor):
+def binary_search(array, item):
+    """
+    Realiza uma pesquisa binária em um array ordenado e retorna o índice do item
+    ou None se não for encontrado. Também conta o número de comparações feitas.
 
-  esquerda = 0
-  direita = len(array) - 1
+    Argumentos:
+        array: Lista ordenada de elementos.
+        item: O valor a ser buscado no array.
 
-  while esquerda <= direita:
-    meio = (esquerda + direita) // 2
+    Retorna:
+        O índice do item no array ou None se não for encontrado.
+        A quantidade de comparações feitas durante a busca.
+    """
 
-    if array[meio] == valor:
-      return meio
-    elif array[meio] < valor:
-      esquerda = meio + 1
-    else:
-      direita = meio - 1
+    begin = 0
+    end = len(array) - 1
+    count = 0
 
-  return -1
+    while begin <= end:
+        count += 1
+        m = (begin + end) // 2
 
-# Exemplo de uso
-array = [1, 3, 5, 7, 9]
-valor = 5
+        if array[m] == item:
+            return m, count
+        elif array[m] < item:
+            begin = m + 1
+        else:
+            end = m - 1
 
-indice = busca_binaria(array, valor)
+    return None, count # retorna um par de valores
 
-if indice == -1:
-  print("O valor não foi encontrado no array.")
+array = [i for i in range(1, 101)]   # list(range(1, 101))
+item = 30
+
+indice, comparacoes = binary_search(array, item)
+
+if indice is not None:
+    print(f"O valor foi encontrado no índice {indice} e precisou de {comparacoes} tentativas.")
 else:
-  print(f"O valor foi encontrado no índice {indice}.")
+    print(f"O valor não foi encontrado após {comparacoes} tentativas.")
+    
+    
+# A função retorna um par de valores: 
+# o índice do item no array ou None se o item não for encontrado, 
+# e o número de comparações feitas durante a busca.
